@@ -83,7 +83,7 @@ const TodoDetailPage = () => {
 
 
                 <button
-                    className="main-button"
+                    className="secondary-button"
                     onClick={() => navigate('/')}
                 >
                     Назад к списку

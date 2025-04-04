@@ -63,8 +63,8 @@ class TodoItem extends React.Component<TodoItemProps> {
                                     year: "numeric",
                                     month: "long",
                                     day: "numeric",
-                                    hour: "numeric",
-                                    minute: "numeric",
+                                    // hour: "numeric",
+                                    // minute: "numeric",
                                 })}
                         </span>
                     )}

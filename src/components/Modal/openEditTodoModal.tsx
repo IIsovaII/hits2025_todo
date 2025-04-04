@@ -69,7 +69,7 @@ const openEditTodoModal: (
                 return false;
             }
 
-            const dateRegex = /\s*!before:\s*(\d{1,2}[.-]\d{1,2}[.-]\d{4})\s*/;
+            const dateRegex = /\s*!before\s+(\d{1,2}[.-]\d{1,2}[.-]\d{4})\s*/;
             const matchDate = titleInput.match(dateRegex);
             if (matchDate) {
                 titleInput = titleInput.replace(matchDate[0], '');
