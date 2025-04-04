@@ -1,0 +1,49 @@
+.todos-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding-right: 40px;
+}
+
+.todos-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+
+.filter-select {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+}
+
+.loading-spinner {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+}
+
+.error-message {
+    background-color: #ffebee;
+    color: #c62828;
+    padding: 12px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.swal2-input-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.swal2-input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.swal2-input, .swal2-textarea, .swal2-select {
+    width: 80% !important;
+}

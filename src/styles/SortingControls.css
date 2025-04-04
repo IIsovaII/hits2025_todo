@@ -1,0 +1,22 @@
+.sorting-controls{
+    /*width: 100%;*/
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+    padding: 16px;
+    transition: all 0.3s ease;
+}
+
+.sort-criteria-row{
+    width: 100%;
+    justify-content: space-between;
+}
+
+.sort-select {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+}
+
