@@ -3,7 +3,7 @@ import {useTodos} from "../hooks/useTodos.ts";
 import TodoList from '../components/TodoList/TodoList';
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
-import openAddTodoModal from "../components/Modal/openAddTodoModal.tsx";
+import TodoModal from "../components/Modal/TodoModal.tsx";
 import {NavigateFunction, useNavigate} from "react-router-dom";
 import {SortingControls} from "../components/Components/SortingControls.tsx";
 
@@ -72,7 +72,7 @@ const TodosPage: React.FC = () => {
             <div className="todos-controls">
                 <button
                     className="main-button"
-                    onClick={() => openAddTodoModal(createTodo)}
+                    onClick={() => TodoModal(createTodo, null)}
                 >
                     <i className="fa fa-plus"></i> Добавить задачу
                 </button>

@@ -1,7 +1,4 @@
-.sorting-controls{
-    /*width: 100%;*/
-    /*text-align: center;*/
-    /*place-items: center;*/
+.sorting-controls {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
@@ -10,7 +7,7 @@
     transition: all 0.3s ease;
 }
 
-.sort-criteria-row{
+.sort-criteria-row {
     display: flex;
     width: 70%;
     justify-content: space-between;

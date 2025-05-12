@@ -12,7 +12,6 @@ interface TodoItemProps {
 
 
 class TodoItem extends React.Component<TodoItemProps> {
-
     render() {
         const {todo, onToggle, onDelete, navigate} = this.props;
 
@@ -47,13 +46,9 @@ class TodoItem extends React.Component<TodoItemProps> {
                 {todo.description && (<div className="todo-description">{todo.description}</div>)}
 
                 <div className="todo-footer">
-                    {todo.priority && (
-                        <span className={`todo-badge ${priorityClass}`}>{todo.priority}</span>
-                    )}
+                    <span className={`todo-badge ${priorityClass}`}>{todo.priority}</span>
 
-                    {todo.status && (
-                        <span className="todo-badge status">{todo.status}</span>
-                    )}
+                    <span className="todo-badge status">{todo.status}</span>
 
                     {todo.deadline && (
                         <span className="todo-deadline">

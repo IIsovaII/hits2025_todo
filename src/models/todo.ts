@@ -26,7 +26,7 @@ export enum TodoPriority {
 
 export type CreateTodoDto = Omit<Todo, 'id' | 'createdAt' | 'updatedAt'>;
 
-export type UpdateTodoDto = Partial<Omit<Todo, 'id' | 'createdAt' | 'updatedAt' | 'deadline'>>;
+export type UpdateTodoDto = Partial<Omit<Todo, 'id' | 'createdAt' | 'updatedAt'>>;
 
 export interface TodoFilters {
     searchText?: string;
@@ -40,22 +40,37 @@ export interface SortConfig<T> {
     direction?: 'asc' | 'desc';
 }
 
-export const sortTodos: (array: Todo[], config: SortConfig<Todo> | SortConfig<Todo>[]) => Todo[] =
-    (array: Todo[], config: SortConfig<Todo> | SortConfig<Todo>[]) => {
-        const sortedArray = [...array];
-        const configs = Array.isArray(config) ? config : [config];
+export const sortTodos = (array: Todo[], config: SortConfig<Todo> | SortConfig<Todo>[]): Todo[] => {
+    const sortedArray = [...array];
+    const configs = Array.isArray(config) ? config : [config];
 
-        return sortedArray.sort((a, b) => {
-            for (const {key, direction = 'asc'} of configs) {
-                const valueA = a[key] ?? '';
-                const valueB = b[key] ?? '';
+    const priorityOrder = {
+        [TodoPriority.CRITICAL]: 3,
+        [TodoPriority.HIGH]: 2,
+        [TodoPriority.MEDIUM]: 1,
+        [TodoPriority.LOW]: 0
+    };
 
-                if (valueA < valueB) return direction === 'asc' ? -1 : 1;
-                if (valueA > valueB) return direction === 'asc' ? 1 : -1;
+    return sortedArray.sort((a, b) => {
+        for (const {key, direction = 'asc'} of configs) {
+            if (key === 'priority') {
+                const priorityA = priorityOrder[a.priority];
+                const priorityB = priorityOrder[b.priority];
+
+                if (priorityA < priorityB) return direction === 'asc' ? -1 : 1;
+                if (priorityA > priorityB) return direction === 'asc' ? 1 : -1;
+                continue;
             }
-            return 0;
-        });
-    }
+
+            const valueA = a[key] ?? '';
+            const valueB = b[key] ?? '';
+
+            if (valueA < valueB) return direction === 'asc' ? -1 : 1;
+            if (valueA > valueB) return direction === 'asc' ? 1 : -1;
+        }
+        return 0;
+    });
+};
 
 export const filterTodos = (todos: Todo[], filters: TodoFilters): Todo[] => {
     return todos.filter(todo => {

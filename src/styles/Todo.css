@@ -131,30 +131,22 @@
     border-color: #4caf50;
 }
 
-.todo-badge.priority-critical
-    /*,  .attribute-value.priority-critical*/
-{
+.todo-badge.priority-critical {
     background-color: #dbcbf3;
     color: #a674f2;
 }
 
-.todo-badge.priority-high
-    /*,  .attribute-value.priority-high */
-{
+.todo-badge.priority-high {
     background-color: #ffebee;
     color: #d32f2f;
 }
 
-.todo-badge.priority-medium
-    /*,  .attribute-value.priority-medium*/
-{
+.todo-badge.priority-medium {
     background-color: #fff3e0;
     color: #ef6c00;
 }
 
-.todo-badge.priority-low
-    /*,  .attribute-value.priority-low */
-{
+.todo-badge.priority-low {
     background-color: #e8f5e9;
     color: #2e7d32;
 }
@@ -198,10 +190,7 @@
 }
 
 .attribute-value {
-    /*color: #4a6bdf;*/
     font-family: monospace;
-    /*background-color: #f0f2ff;*/
-    /*font-size: 15px;*/
     padding: 4px 8px;
     border-radius: 4px;
     border-left: 1px solid #f0f0f0;

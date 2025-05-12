@@ -2,7 +2,7 @@ import {useNavigate, useParams} from 'react-router-dom';
 import {useTodo} from "../hooks/useTodo.ts";
 import Swal from "sweetalert2";
 import TodoData from "../components/TodoList/TodoData.tsx";
-import openEditTodoModal from "../components/Modal/openEditTodoModal.tsx";
+import TodoModal from "../components/Modal/TodoModal.tsx";
 
 const TodoDetailPage = () => {
         const {id} = useParams();
@@ -65,7 +65,7 @@ const TodoDetailPage = () => {
                 {todo ? (
                     <>
                         <button
-                            onClick={() => openEditTodoModal(updateTodo, todo)}
+                            onClick={() => TodoModal(updateTodo, todo)}
                             className="main-button"
                         >
                             Редактировать задачу

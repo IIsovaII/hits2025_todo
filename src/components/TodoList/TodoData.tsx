@@ -55,9 +55,7 @@ class TodoData extends React.Component<TodoDataProps> {
                                         {
                                             year: "numeric",
                                             month: "long",
-                                            day: "numeric",
-                                            // hour: "numeric",
-                                            // minute: "numeric",
+                                            day: "numeric"
                                         })}
                                     </text>
                                 ) :
@@ -80,9 +78,7 @@ class TodoData extends React.Component<TodoDataProps> {
                             {
                                 year: "numeric",
                                 month: "long",
-                                day: "numeric",
-                                // hour: "numeric",
-                                // minute: "numeric",
+                                day: "numeric"
                             })}</td>
                     </tr>
                     <tr>
@@ -92,9 +88,7 @@ class TodoData extends React.Component<TodoDataProps> {
                             {
                                 year: "numeric",
                                 month: "long",
-                                day: "numeric",
-                                // hour: "numeric",
-                                // minute: "numeric",
+                                day: "numeric"
                             }) : null}</td>
                     </tr>
                 </table>

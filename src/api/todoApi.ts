@@ -1,5 +1,5 @@
-import { Todo, CreateTodoDto, UpdateTodoDto } from '../models/todo';
-import { API_URL, apiHeaders, handleResponse } from './apiConfig';
+import {Todo, CreateTodoDto, UpdateTodoDto} from '../models/todo';
+import {API_URL, apiHeaders, handleResponse} from './apiConfig';
 
 export const todoApi = {
     async getAll(): Promise<Todo[]> {
