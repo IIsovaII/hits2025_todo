@@ -6,12 +6,17 @@ import { dateToInput } from '../../utils/dateFormatters';
 const TodoModal: (createTodo: (data: CreateTodoDto) => Promise<void | Todo | undefined>, prevTodo: Todo | null) =>
     Promise<void> = async (createTodo: (data: CreateTodoDto) => Promise<void | Todo | undefined>, prevTodo: Todo | null) => {
 
+        const prev_title : string = prevTodo != null ? prevTodo.title : ""
+        const prev_deadline : null | string  = prevTodo? dateToInput(prevTodo.deadline): null
+        // console.log(prev_title, prev_deadline);
+        // console.log(prev_deadline, prevTodo?.deadline,  dateToInput(prevTodo.deadline));
+
         const result = await Swal.fire({
             title: (prevTodo == null ? 'Создать новую задачу' : 'Изменить задачу'),
             html: `
                 <div class="swal2-input-group">
                     <label for="title">Название:</label>
-                    <input id="title" class="swal2-input" placeholder="Название задачи" required minlength="4" value=${prevTodo ? prevTodo.title : ''}>
+                    <input id="title" class="swal2-input" placeholder="Название задачи" required minlength="4" value="${prev_title.replace(/"/g, '&quot;')}">
                     <p>Возможно использование макросов типа !before 31.12.2025 для deadline и !1 для priority</p>
                 </div>
                 <div class="swal2-input-group">
@@ -20,7 +25,7 @@ const TodoModal: (createTodo: (data: CreateTodoDto) => Promise<void | Todo | und
                 </div>
                 <div class="swal2-input-group">
                     <label for="deadline">Срок выполнения:</label>
-                    <input type="date" id="deadline" class="swal2-input" value=${prevTodo? dateToInput(prevTodo.deadline): null}>
+                    <input type="date" id="deadline" class="swal2-input" value=${prev_deadline}>
                 </div>
                 <div class="swal2-input-group">
                     <label for="priority">Приоритет:</label>
@@ -29,7 +34,7 @@ const TodoModal: (createTodo: (data: CreateTodoDto) => Promise<void | Todo | und
                         <option value="LOW" ${prevTodo ? (prevTodo.priority === "LOW" ? "selected" : "") : ""}>Низкий</option>
                         <option value="MEDIUM" ${prevTodo ? (prevTodo.priority === "MEDIUM" ? "selected" : "") : ""}>Средний</option>
                         <option value="HIGH" ${prevTodo ? (prevTodo.priority === "HIGH" ? "selected" : "") : ""}>Высокий</option>
-                        <option value="CRITICAL" ${prevTodo ? (prevTodo.priority === "LOW" ? "CRITICAL" : "") : ""}>Критический</option>
+                        <option value="CRITICAL" ${prevTodo ? (prevTodo.priority === "CRITICAL" ? "CRITICAL" : "") : ""}>Критический</option>
                     </select>
                 </div>
             `,
@@ -87,7 +92,7 @@ const TodoModal: (createTodo: (data: CreateTodoDto) => Promise<void | Todo | und
             const todoData: CreateTodoDto = {
                 title: result.value.title,
                 description: result.value.description,
-                completed: false,
+                completed: prevTodo? prevTodo.completed : false,
                 deadline: result.value.deadline,
                 status: TodoStatus.ACTIVE,
                 priority: result.value.priority as TodoPriority
